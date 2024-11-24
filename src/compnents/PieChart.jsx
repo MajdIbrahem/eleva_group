@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Tooltip } from 'recharts';
-import { motion } from 'framer-motion'
+
 
 const PieChart = ({ PieData, title }) => {
   const { dark } = useContext(DarkModeContext)

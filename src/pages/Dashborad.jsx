@@ -11,7 +11,7 @@ import RequestCard from '../compnents/RequestCard';
 import TopVendors from '../compnents/TopVendors';
 import TopRequests from '../compnents/TopRequests';
 import lightBackground from '../assets/d35026c92c28c6c004145facdd38e305.jpg'
-import 'rsuite/dist/rsuite.min.css';
+
 import { MdFilterAlt } from "react-icons/md";
 
 

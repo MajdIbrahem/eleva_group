@@ -9,7 +9,7 @@ import logo from '../assets/logo.png'
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { MdAssignmentAdd } from "react-icons/md";
-import { motion } from 'framer-motion'
+
 const Sidbar = () => {
     const { dark } = useContext(DarkModeContext)
     const [isOpen,setIsopen]=useState(true)

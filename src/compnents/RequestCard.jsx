@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
 
-import AnimatedNumbers from "react-animated-numbers";
+
 import { FaFileCircleCheck } from "react-icons/fa6";
 import { FaFileCircleExclamation } from "react-icons/fa6";
 import { FaFileCircleXmark } from "react-icons/fa6";
-import { motion } from 'framer-motion'
+
 const RequestCard = ({title,value}) => {
     const { dark } = useContext(DarkModeContext)
     return (
