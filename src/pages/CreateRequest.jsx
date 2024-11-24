@@ -103,7 +103,7 @@ const CreateRequest = () => {
                     <div className={`w-full pt-4  ml-6 md:ml-0 rounded-2xl ${dark ? "bg-card-dark shadow-md border border-gray-700" : "bg-white shadow-xl shadow-secondairy"} flex flex-col items-center justify-start gap-6 p-5 `}>
                         <div className='flex jutify-start items-start gap-16 w-full flex-wrap mx-16'>
                             <div className={`flex flex-col justify-center items-center gap-2 p-3 rounded-2xl ${dark?"bg-background-dark  shadow-md border border-gray-700":"bg-primary/20 border  bg-opacity-70 shadow-md shadow-gry-300"}`}>
-                                <h1 className='text-xl'>New Item</h1>
+                                <h1 className='text-xl'>add New Item</h1>
                                 <form onSubmit={addHandler} className='flex flex-col justify-center items-center gap-1 w-full'>
                                     <div className='flex justify-between items-center gap-1 w-full'>
                                         <h1 className=' text-start w-1/2'>Item Name:</h1>
