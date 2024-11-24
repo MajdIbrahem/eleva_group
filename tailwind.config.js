@@ -20,8 +20,6 @@ module.exports =  withMT({
     },
     extend: {},
   },
-  plugins: [
-    require("tailwindcss-inner-border"),
-  ],
+  plugins: [],
 })
 
