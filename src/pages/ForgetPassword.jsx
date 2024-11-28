@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import bg from '../assets/2.jpg'
-import logo from '../assets/logo.png'
+import logo from '../assets/image.png'
 const ForgetPassword = () => {
   const [email, setEmail] = useState('')
   const [isSent, setIsSent] = useState(false)

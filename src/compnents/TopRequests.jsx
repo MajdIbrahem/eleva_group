@@ -6,36 +6,26 @@ import user from '../assets/team4.jpg';
 const TopRequests = ({topRequests}) => {
     const { dark } = useContext(DarkModeContext)
   return (
-    <div className=' '>
-                  <div className={`flex justify-start items-start gap-2 flex-col  font-medium w-[325px] md:w-[500px] md:h-[400px] ${dark?"bg-card-dark border-gray-700 border  shadow-md shadow-background-dark ":"text-text-primary bg-white  shadow-lg "} rounded-2xl p-2`}>
-                  <h1 className='text-xl font-semibold '>Top Requests</h1>
-                  <table className="table-auto md:w-full h-[90%] text-xs md:text-md">
-                    <thead className="border-b w-[90%]">
-                      <tr className=" text-xs md:text-md font-semibold text-center">
-                        <th className="w-1/5 p-2">ID</th>
-                        <th className="w-1/5 p-2">Profile</th>
-                        <th className="w-1/5 p-2">Name</th>
-                        <th className="w-1/5 p-2">Total Items</th>
-                        <th className="w-1/5 p-2">Spending</th>
-                      </tr>
-                    </thead>
-                    <tbody className="text-text-primary text-center text-xs md:text-sm">
-                      {topRequests.map(item => (
-                        <tr key={item.vendor} className="border-b">
-                          <td className={`p-2  ${dark?"text-white":""}`}>{item.id}</td>
-                          <td className={`p-2  ${dark?"text-white":""} `}><img src={user}  alt='user' className='w-[30px] h-[30px] ml-6  object-cover rounded-full cursor-pointer'></img></td>
-                          <td className={`p-2  ${dark?"text-white":""}`}>{item.name}</td>
-                          <td className={`p-2  ${dark?"text-white":""}`}>{item.totalItems}</td>
-                          <td className={`p-2  ${dark?"text-white":""}`}>{item.spending}</td>
-                          
-                        </tr>
-                      ))}
-                    </tbody>
-                    </table>
-                    <Link to='/vendors' className='text-center text-sm  ml-60'><h3>See All</h3></Link>
-                    
+                <div className={`flex justify-start items-start gap-2 flex-col  font-medium w-[325px] md:w-[325px] md:h-[400px] ${dark?"bg-white bg-opacity-15 ":"text-text-primary bg-white  shadow-lg "} rounded-2xl p-2`}>
+                  <div className='w-full flex justify-between items-center px-1'>
+                  <h1 className='text-lg  '>Top Requests</h1>
+                    <Link to='/vendors' className='text-end text-sm text-primary '><h3>See All</h3></Link>
                   </div>
-              </div>
+                  <div className='w-full flex justify-between flex-col items-center px-1'>
+                  {topRequests.map(request =>
+                  <div className='w-full flex justify-between items-center py-2 border-b px-1'>
+                      <div className='flex justify-center items-center gap-2'>
+                        <img src={user} alt="" className='w-[40px] h-[40px] rounded-full' />
+                        <div className='flex flex-col justify-center items-center gap-1'>
+                          <h4 className='text-text '>{request.name}</h4>
+                          <p className='text-xs'>{ request.totalItems} Items</p>
+                        </div>
+                    </div>
+                      <div className='font-semibold'>{ request.spending}</div>
+                  </div>)}
+                  </div>
+                  </div>
+
   )
 }
 

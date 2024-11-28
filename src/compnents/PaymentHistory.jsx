@@ -7,11 +7,11 @@ const PaymentHistory = ({paymentdata}) => {
     const { dark } = useContext(DarkModeContext)
   return (
     <div className=''>
-        <div className={`flex justify-start items-start gap-2 flex-col w-[325px] h-[200px] md:w-[500px] md:h-[275px] ${dark?"bg-card-dark border-gray-700 border shadow-md shadow-background-dark ":"text-text-primary bg-white shadow-lg "} rounded-2xl p-2`}>
-        <h1 className='text-xl '>Payment History</h1>
-        <ResponsiveContainer width="100%" height="90%">
+        <div className={`flex justify-start items-start gap-6 flex-col w-[325px] h-[200px] md:w-[675px] md:h-[350px] ${dark?"bg-white bg-opacity-15 ":"text-text-primary bg-white shadow-lg "} rounded-xl p-2 text-sm`}>
+        <h1 className='text-lg '>Expense Analytics</h1>
+        <ResponsiveContainer width="100%" height="80%">
             <AreaChart
-                width={500}
+                width={800}
                 height={400}
                 data={paymentdata}
                 margin={{
@@ -23,8 +23,8 @@ const PaymentHistory = ({paymentdata}) => {
             >
                 <defs>
                     <linearGradient id="gradientColor" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={`${dark?"#5397C0":"#6F51FF"}`} stopOpacity={1} />
-                        <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0.2} />
+                        <stop offset="0%" stopColor={`${dark?"#879AFF":"#758BFD"}`} stopOpacity={1} />
+                        <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0.5} />
                     </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -34,7 +34,7 @@ const PaymentHistory = ({paymentdata}) => {
                 <Area
                     type="monotone"
                     dataKey="uv"
-                    stroke={`${dark?"#5397C0":"#6F51FF"}`}
+                    stroke={`${dark?"##879AFF":"#758BFD"}`}
                     fill="url(#gradientColor)" // Apply gradient fill
                 />
             </AreaChart>

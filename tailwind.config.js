@@ -6,17 +6,23 @@ module.exports =  withMT({
   ],
   theme: {
     colors: {
-      'primary': '#6F51FF',
+      'primary': '#758BFD',
       'secondairy': '#b9b9b9',
-      'text-primary': '#4f4f50',
-      'text-scondairy': '#15508d',
-      'blue-chart': '#5397C0',
-      
-      
-      "background": "#CAE1EE",
+      'text-primary': '#646464',
+      'text-scondairy': '#EFF1FF',
+      'text': '#353536',
+      "shadow":"#DADAE3",
+      "background": "#F9F9FD",
+
+
+
       "black": "#000000",
-      "background-dark": "#262846",
-      "card-dark":"#343355"
+      "background-dark": "#1E2130",
+      "card-dark": "#343355",
+      "primary-dark": "#879AFF",
+      "secondairy-dark":"#5E6480",
+      "text-primary-dark": "#F2F3F9",
+      "secondairy-dark":"#898FAC"
     },
     extend: {},
   },

@@ -115,6 +115,7 @@ const  OfficerRequest = () => {
         "created_at": "2024-11-11T15:23:40.075218Z"
     }
     const [request, setRequest] =useState(initialRequest)
+    const [errors, setErrors] = useState({});
     const [open, setOpen] = useState(false)
     const getStatusColor = (status) => {
   switch (status) {
@@ -133,17 +134,43 @@ const  OfficerRequest = () => {
     const handleInputChange = (index, field, value) => {
         setRequest(prevRequest => {
             const updatedItems = [...prevRequest.items];
-            updatedItems[index] = {
-                ...updatedItems[index],
-                [field]: value,
-            };
+            updatedItems[index] = { ...updatedItems[index], [field]: value };
             return { ...prevRequest, items: updatedItems };
         });
+
+        // Clear the error for this field
+        setErrors(prevErrors => ({
+            ...prevErrors,
+            [index]: { ...prevErrors[index], [field]: '' },
+        }));
     };
+
+    const validateFields = () => {
+        const newErrors = {};
+
+        request.items.forEach((item, index) => {
+            const itemErrors = {};
+            if (!item.price) itemErrors.price = 'required';
+            if (!item.vendor) itemErrors.vendor = ' required';
+            if (!item.percentage) itemErrors.percentage = 'required';
+            if (!item.saving) itemErrors.saving = ' required';
+            if (Object.keys(itemErrors).length > 0) {
+                newErrors[index] = itemErrors;
+            }
+        });
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0; // Return true if no errors
+    };
+
     const submitHandler = (e) => {
         e.preventDefault()
         
-        
+        if (validateFields()) {
+            setOpen(true);
+        } else {
+            console.log('Validation errors:', errors);
+        }
     }
     const sendHandler = (e) => {
         e.preventDefault()
@@ -316,21 +343,30 @@ const  OfficerRequest = () => {
                                             <td className={`px-2  py-2   ${dark?"text-white":""}`}>Details about the item</td>
                                             <td className="px-2 py-2">
                                                 <input
-                                                    
+                                                   placeholder='Add'
                                                     type="number"
                                                     value={item.price || ''}
                                                     onChange={(e) => handleInputChange(index, 'price', e.target.value)}
-                                                   className={`  w-full text-center p-1 rounded-lg focus:outline-none appearance-none ${dark?" text-white bg-card-dark shadow-md shadow-background-dark ":"border border-gray-300 bg-[#ffffff]  text-sm font-thin"} `}
+                                                    className={`  w-full text-center p-1 rounded-lg focus:outline-none appearance-none ${dark?" text-white bg-card-dark shadow-md shadow-background-dark ":"border border-gray-300 bg-[#ffffff]  text-sm font-thin"} `}
                                                 />
+                                                {errors[index]?.price && <div className="text-red-500 text-sm">{errors[index].price}</div>}
                                             </td>
                                             <td className="px-2 py-2">
-                                                <input
-                                                    type="text"
-                                                    value={item.vendor || ''}
-                                                    onChange={(e) => handleInputChange(index, 'vendor', e.target.value)}
-                                                    placeholder="Add"
-                                                   className={`  w-full text-center p-1 rounded-lg focus:outline-none appearance-none ${dark?" text-white bg-card-dark shadow-md shadow-background-dark ":"border border-gray-300 bg-[#ffffff]  text-sm font-thin"} `}
-                                                />
+                                                <select
+                                                    
+                                                    name="vendor"
+                                                    placeholder='Add'
+                                                    onChange={(e) => 
+                                                    handleInputChange(index, 'vendor', e.target.value)
+                                                    }
+                                                    className={` w-full py-1 px-3 border rounded-xl text-center focus:outline-none  text-sm ${dark?"bg-card-dark shadow-md shadow-background-dark text-white border border-gray-700":"text-text-primary font-thin  bg-white"} `}
+                                                >
+                                                    
+                                                    <option className='rounded'  value="vendor-1">vendor-1</option>
+                                                    <option className='rounded'  value="vendor-1">vendor-2</option>
+                                                    <option className='rounded'  value="vendor-1">vendor-3</option>
+                                                </select>
+                                                   {errors[index]?.vendor && <div className="text-red-500 text-sm">{errors[index].vendor}</div>}
                                             </td>
                                             <td className="px-2 py-2">
                                                 <input
@@ -340,14 +376,17 @@ const  OfficerRequest = () => {
                                                     placeholder="Add"
                                                     className={` w-full  text-center p-1 rounded-lg focus:outline-none appearance-none ${dark?" text-white bg-card-dark shadow-md shadow-background-dark ":"border border-gray-300 bg-[#ffffff]  text-sm font-thin"} `}
                                                 />
+                                                {errors[index]?.percentage && <div className="text-red-500 text-sm">{errors[index].percentage}</div>}
                                             </td>
                                             <td className="px-2 py-2">
                                                 <input
+                                                placeholder='Add'
                                                     type="number"
                                                     value={item.saving || ''}
                                                     onChange={(e) => handleInputChange(index, 'saving', e.target.value)}
                                                    className={` w-full text-center p-1 rounded-lg focus:outline-none appearance-none ${dark?" text-white bg-card-dark shadow-md shadow-background-dark ":"border border-gray-300 bg-[#ffffff]  text-sm font-thin"} `}
                                                 />
+                                                {errors[index]?.saving && <div className="text-red-500 text-sm">{errors[index].saving}</div>}
                                             </td>
                                         </tr>
                                     ))}

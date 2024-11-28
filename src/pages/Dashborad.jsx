@@ -1,6 +1,6 @@
 import { useContext,useState,useEffect } from 'react';
 import { DarkModeContext } from '../context/DarkModeContext';
-import darkbackground from '../assets/6780104_3433372.jpg'
+
 import Sidbar from '../compnents/Sidbar';
 import Navbar from '../compnents/Navbar';
 import PaymentHistory from '../compnents/PaymentHistory';
@@ -10,10 +10,10 @@ import ExpenseCard from '../compnents/ExpenseCard';
 import RequestCard from '../compnents/RequestCard';
 import TopVendors from '../compnents/TopVendors';
 import TopRequests from '../compnents/TopRequests';
-import lightBackground from '../assets/d35026c92c28c6c004145facdd38e305.jpg'
+
 
 import { MdFilterAlt } from "react-icons/md";
-
+import EXpenseProject from '../compnents/EXpenseProject';
 
 const Dashborad = () => {
   const { dark } = useContext(DarkModeContext)
@@ -264,137 +264,134 @@ const topVendorsData=[
             {/* Background Image or  Overlay */}
             {dark ? (<>
                 
-                <div className="fixed top-0 left-0 w-full h-full bg-[#262846]  z-0"></div>
+                <div className="fixed top-0 left-0 w-full h-full bg-background-dark  z-0"></div>
                 </>
             ) : (<>
           
-           <div className="fixed top-0 left-0 w-full h-full bg-gray-200   z-0"></div>
+           <div className="fixed top-0 left-0 w-full h-full bg-background   z-0"></div>
           </>
             )}
             
             {/* Main Content */}
-            <div className="relative  w-full h-full flex items-center justify-center mb-32 ">
+            <div className="relative   w-full h-full flex items-center justify-center ">
                 <Sidbar />
                 <Navbar />
-                <div className={`w-5/6 ml-56 h-full mt-40 ${dark?"text-white":"text-text-primary font-semibold"} px-8`}>
-                  <div className='flex items-center justify-center flex-col gap-6 '>
+                <div className={`w-5/6 ml-44 h-full mt-36  ${dark?"text-text-primary-dark":"text-text-primary font-semibold"} px-2`}>
+                  <div className='w-full flex items-center  justify-center flex-col px-2 '>
                     {/* filters */}
-                    <div className='relative z-50 flex items-center justify-center lg:gap-16 mr-8 gap-4 flex-wrap mb-2 mt-8'>
-                      <div className='flex items-center justify-center lg:gap-10 gap-4'>
-                
-                <div className='flex items-center justify-center gap-4'>
-                  <label htmlFor="start date"> From</label>
-                  <input
-                    type="date"
-                    id="start date"
-                    value={startDate}
-                    onChange={(e) => { setStartDate(e.target.value) }}
-                    className={` w-[140px] py-1 px-2 rounded-xl text-center focus:outline-none appearance-none text-sm ${dark?"bg-card-dark shadow-md shadow-background-dark text-white border border-gray-700":"text-text-primary font-thin text-center bg-white"} `}
-                  />
-                </div>
-                <div className='flex items-center justify-center gap-4'>
-                  <label htmlFor="end date"> To</label>
-                  <input
-                    type="date"
-                    id="end date"
-                    value={endDate}
-                    onChange={(e) => { setEndDate(e.target.value) }}
-                    className={` w-[140px] py-1 px-3 rounded-xl text-center focus:outline-none appearance-none text-sm ${dark?"bg-card-dark shadow-md shadow-background-dark text-white border border-gray-700":"text-text-primary font-thin text-center bg-white"} `}
-                  />
-                </div>
+                    <div className={`relative w-[1070px] ml-11 z-40 ${dark?"bg-white bg-opacity-15":"bg-white shadow-md shadow-shadow"}  rounded-lg  py-4 px-1  flex items-center justify-center lg:gap-12  gap-4  mb-6 mt-6`}>
+                      <h1 className='text-xl'>Filter By</h1>
+                      <div className='flex items-center justify-center lg:gap-12 gap-4'>
+                        <div className='flex items-start flex-col justify-start gap-1'>
+                        <label className="text-sm font-normal" htmlFor="start date"> From</label>
+                        <input
+                          type="date"
+                          id="start date"
+                          value={startDate}
+                          onChange={(e) => { setStartDate(e.target.value) }}
+                          className={` w-[140px] py-1 px-2 rounded-lg border text-center focus:outline-none appearance-none text-sm ${dark?"bg-white bg-opacity-0 text-white border border-gray-700":"text-text-primary font-thin text-center bg-white"} `}
+                        />
+                      </div>
+                      <div className='flex items-start flex-col justify-start gap-1'>
+                        <label className="text-sm font-normal" htmlFor="end date"> To</label>
+                        <input
+                          type="date"
+                          id="end date"
+                          value={endDate}
+                          onChange={(e) => { setEndDate(e.target.value) }}
+                          className={` w-[140px] py-1 px-3 rounded-lg border text-center focus:outline-none appearance-none text-sm ${dark?"bg-white bg-opacity-0 text-white border border-gray-700":"text-text-primary font-thin text-center bg-white"} `}
+                        />
+                      </div>
+                          </div>
+                    <div className='flex items-start flex-col justify-start gap-1'>
+                      <h1 className='text-sm font-normal'>Status</h1>
+                      <form className='rounded relative' >
+                        <MdFilterAlt className={ `absolute top-2 right-2 text-sm ${dark?"text-black":"text-text-primary"}  z-10`} />
+                        <label htmlFor="status" className="block  text-sm font-medium text-text-primary">
+                        </label>
+                        <select
+                          id="status"
+                          name="status"
+                          value={statusOption}
+                          onChange={(e) => {
+                            setStatusOption(e.target.value)
+                            console.log(e.target.value)
+                          }}
+                          className={` w-[140px] py-1 px-3 rounded-lg border text-center focus:outline-none appearance-none text-sm ${dark?" text-white bg-white bg-opacity-0 border border-gray-700 ":"text-text-primary font-thin text-center bg-white"} `}
+                        >
+                          
+                          <option className='rounded' value="all">All </option>
+                          <option className='rounded'  value="approved">Approved</option>
+                          <option className='rounded'  value="rejected">Rejected</option>
+                          <option className='rounded'  value="pending">Pending</option>
+                        </select>
+                      </form>
+                            </div>
+                    <div className='flex items-start flex-col justify-start gap-1'>
+                      <h1 className='text-sm font-normal'>Depaetments</h1>
+                      <form className='rounded relative' >
+                        <MdFilterAlt className={ `absolute top-2 right-2 text-sm ${dark?"text-black":"text-text-primary"}  z-10`} />
+                        <label htmlFor="department" className="block  text-sm font-medium text-text-primary">
+                        </label>
+                        <select
+                          id="department"
+                          name="department"
+                          value={departmentOption}
+                          onChange={(e) => {
+                            setDepartmentOption(e.target.value)
+                          console.log(e.target.value)
+                          }}
+                          className={` w-[140px] py-1 px-3 rounded-lg border text-center focus:outline-none appearance-none text-sm ${dark?"bg-white bg-opacity-0 text-white border border-gray-700":"text-text-primary font-thin text-center bg-white"} `}
+                        >
+                          
+                          <option className='rounded' value="all">All </option>
+                          <option className='rounded'  value="department-1">department-1</option>
+                          <option className='rounded'  value="department-2">department-2</option>
+                          <option className='rounded'  value="department-3">department-3</option>
+                        </select>
+                      </form>
+                            </div>
+                    <div className='flex items-start flex-col justify-start gap-1'>
+                      <h1 className='text-sm font-normal'>Projects</h1>
+                      <form className='rounded relative' >
+                  <MdFilterAlt className={ `absolute top-2 right-2 text-sm ${dark?"text-black":"text-text-primary"}  z-10`} />
+                        <label htmlFor="location" className="block  text-sm font-medium text-text-primary ">
+                        </label>
+                        <select
+                          id="project"
+                          name="project"
+                          value={locationOption}
+                          onChange={(e) => {
+                            setlocationOption(e.target.value)
+                            console.log(e.target.value)
+                          }}
+                          className={` w-[140px] py-1 px-3 rounded-lg border text-center focus:outline-none appearance-none text-sm ${dark?"bg-white bg-opacity-0  text-white border border-gray-700":"text-text-primary font-thin  bg-white"} `}
+                        >
+                          
+                          <option className='rounded' value="all">All </option>
+                          <option className='rounded'  value="project-1">project-1</option>
+                          <option className='rounded'  value="project-2">project-2</option>
+                          <option className='rounded'  value="project-3">project-3</option>
+                        </select>
+                      </form>
+                      </div>
                     </div>
-              <div className='flex items-center justify-center gap-1'>
-                
-                <form className='rounded relative' >
-                  <MdFilterAlt className='absolute top-2 right-2 text-sm text-black z-10'/>
-                  <label htmlFor="status" className="block  text-sm font-medium text-gray-700">
-                  </label>
-                  <select
-                    id="status"
-                    name="status"
-                    value={statusOption}
-                    onChange={(e) => {
-                      setStatusOption(e.target.value)
-                      console.log(e.target.value)
-                    }}
-                    className={` w-[140px] py-1 px-3 rounded-xl text-center focus:outline-none appearance-none text-sm ${dark?" text-white bg-card-dark shadow-md shadow-background-dark border border-gray-700 ":"text-text-primary font-thin text-center bg-white"} `}
-                  >
-                    
-                    <option className='rounded' value="all">All Status</option>
-                    <option className='rounded'  value="approved">Approved</option>
-                    <option className='rounded'  value="rejected">Rejected</option>
-                    <option className='rounded'  value="pending">Pending</option>
-                  </select>
-                </form>
-                      </div>
-              <div className='flex items-center justify-center gap-1'>
-                
-                <form className='rounded relative' >
-                  <MdFilterAlt className='absolute top-2 right-1 text-sm text-black z-10'/>
-                  <label htmlFor="department" className="block  text-sm font-medium text-gray-700">
-                  </label>
-                  <select
-                    id="department"
-                    name="department"
-                    value={departmentOption}
-                    onChange={(e) => {
-                      setDepartmentOption(e.target.value)
-                    console.log(e.target.value)
-                    }}
-                    className={` w-[140px] py-1 px-3 rounded-xl text-center focus:outline-none appearance-none text-sm ${dark?"bg-card-dark shadow-md shadow-background-dark text-white border border-gray-700":"text-text-primary font-thin text-center bg-white"} `}
-                  >
-                    
-                    <option className='rounded' value="all">All Departments</option>
-                    <option className='rounded'  value="department-1">department-1</option>
-                    <option className='rounded'  value="department-2">department-2</option>
-                    <option className='rounded'  value="department-3">department-3</option>
-                  </select>
-                </form>
-                      </div>
-              <div className='flex items-center justify-center gap-1'>
-                
-                <form className='rounded relative' >
-                  <MdFilterAlt className='absolute top-2 right-2 text-sm text-black z-10'/>
-                  <label htmlFor="location" className="block  text-sm font-medium text-text-primary ">
-                  </label>
-                  <select
-                    id="status"
-                    name="department"
-                    value={locationOption}
-                    onChange={(e) => {
-                      setlocationOption(e.target.value)
-                      console.log(e.target.value)
-                    }}
-                    className={` w-[140px] py-1 px-3 rounded-xl text-center focus:outline-none appearance-none text-sm ${dark?"bg-card-dark shadow-md shadow-background-dark text-white border border-gray-700":"text-text-primary font-thin  bg-white"} `}
-                  >
-                    
-                    <option className='rounded' value="all">All Locations</option>
-                    <option className='rounded'  value="location-1">location-1</option>
-                    <option className='rounded'  value="location-2">location-2</option>
-                    <option className='rounded'  value="location-3">location-3</option>
-                  </select>
-                </form>
-                      </div>
-                    </div>
-                    <div className='flex justify-between items-start md:gap-10 flex-wrap mb-32'>
-                          <div className='flex justify-start items-start flex-col gap-8'>
-                            <div className='flex justify-center items-center flex-wrap md:mr-32 lg:mr-0 sm:mr-0 gap-2 lg:gap-9'>
+                    <div className='flex justify-between items-start  flex-wrap mt-4 '>
+                          <div className='flex justify-start items-start flex-col gap-6'>
+                            <div className='flex justify-center items-center   pl-14 gap-4 lg:gap-6'>
                             <ExpenseCard title='Total Expenses' value='4000'/>
                             <RequestCard title='Approved Requests' value='230'/> 
                             <RequestCard title='Rejected Requests' value='40'/> 
                             <RequestCard title='Pending Requests' value='450' />
                             </div>
-                            <div className='flex justify-center items- flex-col lg:flex-row  gap-4'>
+                            <div className='w-full flex justify-center items-center pl-11 flex-col lg:flex-row  gap-6'>
                               <PaymentHistory paymentdata={ paymentdata} />
-                              <RequestsBar requestdata={requestdata} />
+                              <PieChart PieData={ departmentsData} title='Expense By Department'/>
                               </div>
-                            <div className='flex justify-center items-center flex-col lg:flex-row  gap-4'>
-                              <TopVendors topVendorsData={topVendorsData} />
-                              <PieChart PieData={ departmentsData} title='Department Spending'/>
-                              </div>
-                            <div className='flex justify-center items-center flex-col lg:flex-row gap-4'>
-                              <TopRequests topRequests={topRequests} />
-                              <PieChart PieData={ProjectsData} title='Project Spending' />
+                            <div className='w-full pl-10 mb-24 flex justify-center items-center flex-col lg:flex-row gap-6'>
+                                <TopRequests topRequests={topRequests} />
+                                <TopVendors topVendorsData={topVendorsData} />
+                                <EXpenseProject/>
                             </div>
                         </div>
                       

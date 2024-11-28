@@ -9,11 +9,11 @@ const PieChart = ({ PieData, title }) => {
   
 
   return (
-                  <div className={`flex justify-start items-start gap-2 flex-col  w-[325px] md:w-[500px]  md:h-[400px] h-[270px]   ${dark ? "bg-card-dark border-gray-700 border shadow-md shadow-background-dark " : "text-text-primary bg-white shadow-lg "} rounded-2xl p-2`}>
-                    <h1 className='text-xl '>{title }</h1>
+                  <div className={`flex justify-start items-start gap-2 flex-col  w-[325px] md:w-[370px]  md:h-[350px] h-[270px]   ${dark ? "bg-white bg-opacity-15 " : "text-text-primary bg-white shadow-lg "} rounded-xl p-2 text-sm`}>
+                    <h1 className='text-lg '>{title }</h1>
                     <ResponsiveContainer width="100%" height="100%">
-                      <RadarChart cx="50%" cy="50%" outerRadius="80%" data={PieData} tick={{ fill: `${dark?"white":"#232323"}`, fontWeight: 600 }}>
-                        <PolarGrid  tick={{ fill: `${dark?"white":"#4f4f50"}`, fontWeight: 600 }}/>
+                      <RadarChart cx="50%" cy="45%" outerRadius="70%" data={PieData} tick={{ fill: `${dark?"white":"#232323"}`, fontWeight: 400 }}>
+                        <PolarGrid  tick={{ fill: `${dark?"white":"#4f4f50"}`, fontWeight: 400 }}/>
                         <PolarAngleAxis 
                           dataKey="subject" 
                           tick={{ fill: `${dark?"white":"#4f4f50"}`, fontWeight: 400 }}
@@ -23,8 +23,8 @@ const PieChart = ({ PieData, title }) => {
                           name="Spending" 
                           dataKey="Spending" 
                           stroke="#97daee" 
-                          fill={`${dark?"#5397C0":"#6F51FF"}`}
-                          fillOpacity={0.8} 
+                          fill={`${dark?"#879AFF":"#758BFD"}`}
+                          fillOpacity={0.6} 
                         />
                         <Tooltip />
                         </RadarChart>

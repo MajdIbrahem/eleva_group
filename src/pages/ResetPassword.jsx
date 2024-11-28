@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import bg from '../assets/2.jpg'
-import logo from '../assets/logo.png'
+import logo from '../assets/image.png'
 const ResetPassword = () => {
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')

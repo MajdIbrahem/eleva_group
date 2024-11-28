@@ -15,20 +15,20 @@ const Search = ({ top}) => {
     { title: 'The Sting'},
     { title: '2001: A Space Odyssey'},
     ];
-    const background = dark ? `${top?"#343355":"#262846"}` : `${top?"#ffffff":"#f7f5fa"}`;
+    const background = dark ? `${top?"#636363":"#646464"}` : `${top?"#ffffff":"#f7f5fa"}`;
     
 return (
     <Autocomplete
                     style={{
-                        width: 180,
+                        width: 250,
                         height: 35,
                         background: background,
-                        borderRadius: 50,
+                        borderRadius: 10,
                     }}
                     freeSolo
                     sx={{
                         "& .MuiOutlinedInput-root": {
-                            borderRadius: "50px", // Rounded border
+                            borderRadius: "20px", // Rounded border
                             padding: 0,
                             display: 'flex',
                             alignItems: 'center', // Center vertically

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import bg from '../assets/2.jpg'
-import logo from '../assets/logo.png'
+import logo from '../assets/image.png'
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -26,7 +26,7 @@ const Login = () => {
     //     })
     //     .then(res =>{ localStorage.setItem('token', `Bearer ${res.data.token}`)
     //     localStorage.setItem('img', `${res.data.}`)
-    //     localStorage.setItem('name', `${res.data.}`)
+    //     localStorage.setItem('rule', `${res.data.}`)
     //     navigate('/dashborad')
     //         })
     //     .catch(error => console.log(error))

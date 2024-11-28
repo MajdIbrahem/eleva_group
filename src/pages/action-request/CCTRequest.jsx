@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext, useState } from 'react';
 import { DarkModeContext } from '../../context/DarkModeContext';
-import darkbackground from '../../assets/6780104_3433372.jpg'
+
 import Sidbar from '../../compnents/Sidbar';
 import Navbar from '../../compnents/Navbar';
 import Box from '@mui/material/Box';
